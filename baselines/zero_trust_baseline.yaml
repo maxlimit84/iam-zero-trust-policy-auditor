@@ -1,0 +1,26 @@
+# Zero Trust / least-privilege baseline rules for Conditional Access audits.
+#
+# This is a starting set based on common Zero Trust guidance (Microsoft's
+# Zero Trust baseline policies, CIS Microsoft 365 Foundations Benchmark).
+# Extend this list as the auditor's check functions grow.
+
+rules:
+  - id: require-mfa-all-users
+    description: "MFA must be required for all users on sign-in."
+    severity: high
+
+  - id: block-legacy-authentication
+    description: "Legacy authentication protocols (POP, IMAP, SMTP AUTH) must be blocked."
+    severity: high
+
+  - id: require-compliant-device
+    description: "Access to sensitive apps should require a compliant or hybrid Azure AD joined device."
+    severity: medium
+
+  - id: block-high-risk-sign-ins
+    description: "Sign-ins flagged as high risk by Identity Protection should be blocked or require MFA + password reset."
+    severity: high
+
+  - id: restrict-legacy-auth-exceptions
+    description: "Any policy carving out exceptions to MFA/legacy-auth rules should be scoped narrowly and time-bound."
+    severity: medium
